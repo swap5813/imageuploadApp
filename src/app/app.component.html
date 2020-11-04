@@ -1,0 +1,36 @@
+<div class="container" dragdrop (fileDropped)="onFileDropped($event)" style= "margin-top: 20px; ">
+  <div class= "row">
+    <div class= "col-sm">
+      <input #selectFile type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+      <h3>Drag and drop file here</h3>   
+    </div>
+  </div>
+</div>
+
+<div class= "container" style="margin-right: 25px; float: right; margin-top: -200px; border: none;">
+  <div class= "col-sm">
+    <label for="fileDropRef" style="margin-top: 35px;">Browse for file</label>
+  </div>
+</div>
+
+<table class="table table-striped" style= "margin-top: 20px;">
+  <thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Date</th>
+    <th scope="col">Format</th>
+    <th scope="col">Size</th>
+    <th scope="col">Image</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let file of files; index as i" (dblclick)="deleteFile(i)">
+    <td>{{ file.name }}</td>
+    <td>{{ date }}</td>
+    <td>{{ file.type }}</td>
+    <td>{{ file.size }}</td>
+    <td><img src = "file.image"/> </td>
+  </tr>
+  </tbody>
+</table>
+<router-outlet></router-outlet>
